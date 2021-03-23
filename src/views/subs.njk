@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <style>
+        div marquee{
+            font-size: 50px;
+            font-family: Roboto; 
+        }
+    </style>
+  </head>
+  <body>
+    <div>
+        <marquee>
+
+        </marquee>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.0/socket.io.js"></script>
+    <script>
+        var socket = io();
+        var div = document.querySelector("div")
+        socket.emit("amanda_sub", true)
+        socket.on("total_subs", (arg) => {
+            var item = document.querySelector('marquee');
+            item.textContent = `TOTAL DE SUBS: ${arg}/50!`;
+            socket.emit("amanda_sub", false)
+        })
+    </script>
+  </body>
+</html>

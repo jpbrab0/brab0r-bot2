@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+  </head>
+  <body>
+    <div></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.0/socket.io.js"></script>
+    <script>
+      var socket = io();
+      var div = document.querySelector("div")
+        socket.on("subgift", (arg) => {
+          var item = document.createElement('h1');
+          item.textContent = `Valeu pelo giftsub, ${arg}!`;
+          div.appendChild(item)
+        })
+        socket.on("resub", (username, months) => {
+          var item = document.createElement('h1');
+          item.textContent = `Valeu pelo resub de ${months} meses, ${username}!`;
+          div.appendChild(item)
+        })
+      console.log("Olá")
+    </script>
+  </body>
+</html>
