@@ -25,7 +25,7 @@ O bot foi feito com as seguintes tecnologias:
 
 1. Clonar o repositório do github em sua máquina local 👯
 
-******Com https:
+**Com https**:
 ```bash
 git clone https://github.com/jpbrab0/brab0r-bot2.git
 ```
@@ -79,4 +79,4 @@ obs: Você precisa gerar o seu token nesse [site aqui](https://twitchapps.com/tm
 npm start
 ```
 
-**Feito por João Pedro Resende**************
+**Feito por João Pedro Resende**
