@@ -46,6 +46,7 @@ gh repo clone jpbrab0/brab0r-bot2
 
 Pré-requesitos:
   * [Node.Js](https://nodejs.dev/)
+  * [ObsWebSocket](https://github.com/Palakis/obs-websocket/releases/tag/4.9.0)
 
 1. Acesse o projeto já instalado em sua máquina local:
 
@@ -59,10 +60,10 @@ cd brab0r-bot2
 npm install
 ```
 
-3. Crie um arquivo chamado ``.env``:
+3. Renomeie o ``.env.exemple`` para ``.env``:
 
 ```bash
-touch .env
+mv .env.exemple .env
 ```
 
 4. Adicione no ``.env`` o token do seu bot:
@@ -71,9 +72,22 @@ touch .env
 TOKEN=<token do seu bot>
 ```
 
-obs: Você precisa gerar o seu token nesse [site aqui](https://twitchapps.com/tmi/)
+> Você precisa gerar o seu token nesse [site aqui](https://twitchapps.com/tmi/)
 
-5. Por fim, rode:
+5. No arquivo `index.js` mude a const opts:
+
+```js
+const opts = {
+  identity: {
+    username: "<username do seu bot>",
+    password: process.env.TOKEN,
+  },
+  // Coloca o nome do seu canal
+  channels: [<nome do seu canal>],
+};
+```
+
+6. Por fim, rode:
 
 ```bash
 npm start
