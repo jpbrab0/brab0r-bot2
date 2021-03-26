@@ -21,7 +21,6 @@ app.get("/", (req, res) => {
   return res.render("index")
 })
 
-
 app.get("/subs", (req, res) => {
   io.on('connection', (socket) => {
     socket.on('amanda_sub', (arg) => {
@@ -34,10 +33,29 @@ app.get("/subs", (req, res) => {
         })
       }
     });
-  });
-  
-  
+  }); 
   return res.render("subs")
+})
+app.get("/utils", (req, res) => {
+  return res.render("utils.njk")
+})
+app.post("/sh", (req, res) => {
+  const keys = Object.keys(req.body)
+  
+  for(key of keys) {
+    if(req.body[key] == ""){
+      throw new Error("Coloque um nickname válido.")
+    }
+  }
+
+  client.say("jpbrab0", `!sh ${req.body.nickname}`)
+  
+  return res.redirect("/utils")
+})
+app.post("/divulgar-discord", (req, res) => {
+  client.say("jpbrab0","https://caverna.live/discord")
+  
+  return res.redirect("/utils")
 })
 io.on('connection', (socket) => {
   console.log('a user connected');
